@@ -1,0 +1,5 @@
+h-auto and w-auto se hota hai ki humare parent div ki jo height and width hai
+-vo apne child div ki height and width k sath adjust hoti . 
+- as  a result of it child div kbhi parent div k bahr nhi aayega . 
+
+- by default in tailwind css hr parent div ki height auto hi hoti hai 

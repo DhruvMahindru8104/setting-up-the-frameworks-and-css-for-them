@@ -1,0 +1,4 @@
+Dekho third party javascript hota hai aisa code jo hmari website ka nhi hai kisi aur website ka hi . example hum apne website mein meesho ka  add lgana chahte hai vo kaise lgayenge vo hum lgayenge  meesho ki third party javascript ki madad se .
+
+yeh hota hai  script component se
+import Script from 'next/script'

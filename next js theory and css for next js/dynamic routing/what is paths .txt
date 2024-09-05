@@ -1,0 +1,17 @@
+ok see i have an api www.hello.com .
+ this contain 100 blogs . 
+ but if i want to access only 5th post i set api url to www.hello.com/5 . so 5 is value jo ki hum pages/posts/[id] mein denge. jo 5 hoga vo [id] mein store hoga 
+ here 
+ -[id] is dynamic segment or we can say a variable
+ -5 is value which is assign to [id] variable
+ -www.hello.com/5 is path
+
+ main-see mera ek aur question hai vo hai ki agr www.hello.com/5 path ki request marunga to 5th blog ka content mereko page pe show hoga and www.hello.com/6 path ki request pe 6th blog ka content milega. https://nextjs.org/static/images/learn/dynamic-routes/page-path-external-data.png yeh image hume achi trh bta rhi
+
+
+
+ my-nextjs-project/
+├── pages/
+│   ├── posts/
+│   │   └── [id].js  // Dynamic route for each blog post . yha pe aapka path aayega jo ki hmari example mein 5 hai
+│   ├── index.js     // Home page (optional)

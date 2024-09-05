@@ -1,0 +1,4 @@
+Dekho example lo aapne ek website bnayi 100 pages ki 
+IN Traditional website agr user ne about page ki request mari hai to pehle browser sare 100 pages load krega fir hi aapko about page dikhega
+But in next js agr user ne about page ki request mari to only about page hi load hoga baki 100 page tbhi load honge jb user unpr request marega.
+As a result of it jo aapka loading time hai vo km hoga aur website bhut smooth chlegi .

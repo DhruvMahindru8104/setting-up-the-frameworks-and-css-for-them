@@ -1,0 +1,6 @@
+Dekho next js mein Head component hota hai ismein aap title , metatag sb kuch lga skte 
+
+<Head>
+  <title>Create Next App</title>
+  <link rel="icon" href="/favicon.ico" />
+</Head>

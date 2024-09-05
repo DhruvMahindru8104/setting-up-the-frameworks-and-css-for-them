@@ -1,0 +1,3 @@
+- vercel mein apne project ko host krna sbse aasan hai . 
+- bs apne vercel account ko github k sath connect kro 
+- bs iska drawback hai aapke project ko dekhne k liye dusre user ko vercel pr sign up krna hoga

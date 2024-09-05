@@ -1,0 +1,2 @@
+h-full and w-full se hota hai ki humare child div ki jo height and width hai
+-vo apne parent div ki height and width k sath adjust hoti . 

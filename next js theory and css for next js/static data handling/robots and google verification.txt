@@ -1,0 +1,4 @@
+robots.txt aur google-site-verification.html:
+
+robots.txt aapko control dena hai ki kaunse pages ya directories ko search engines index karen aur kaunse ko ignore karen.
+google-site-verification.html aapke site ownership ko verify karne ke liye Google ke sath use hota hai, jisse aap Google Search Console jese tools ko use kar sakein.

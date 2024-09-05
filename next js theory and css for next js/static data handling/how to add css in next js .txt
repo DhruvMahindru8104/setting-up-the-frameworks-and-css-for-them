@@ -1,0 +1,29 @@
+1st treeka inline stylw 
+<h1 style={{ color: 'blue', textAlign: 'center' }}> ismein aap {{}} k beech mein css dete dict ki form mein 
+
+2nd treeka 
+component folder mein hr ek component ki ek css file bnao 
+
+example agr component folder mein Header.js hai to ek Header.module.css bhi honi chahiye for external css 
+
+bs Header.js mein likho 
+import styles from './Header.module.css'
+<div className={style.Hero}> ab jo aapne Hero name ki class bnayi hogi Header.module.css mein vo add ho jayegi is div mein 
+
+
+#ab dekho yeh good hai isse aap css blocks and html alg rkh k jyada control mein reh rhe ho . 
+ 
+ 3rd treeka 
+ tailwind css 
+ step 1 - pages/_app.js file bnado 
+ // pages/_app.js
+import '../styles/globals.css'
+
+function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />
+}
+
+export default MyApp
+ iske andr yeh code hoga 
+
+step 2 -https://tailwindcss.com/docs/guides/nextjs is link se documentation dekh lo kaise install kre

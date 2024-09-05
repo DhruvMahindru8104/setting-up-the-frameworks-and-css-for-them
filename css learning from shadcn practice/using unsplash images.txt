@@ -1,0 +1,8 @@
+step 1 - create next.config.js and then copy the code
+module.exports = {
+  images: {
+    domains: ['images.unsplash.com'],
+  },
+};
+
+now you can use these images

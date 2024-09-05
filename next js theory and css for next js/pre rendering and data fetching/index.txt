@@ -1,0 +1,4 @@
+- what is pre rendering in next js 
+-static generation vs server side rendering
+-static generation
+-server side rendering vs client side rendering

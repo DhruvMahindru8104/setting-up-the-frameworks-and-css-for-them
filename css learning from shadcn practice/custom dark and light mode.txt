@@ -1,0 +1,31 @@
+step1- 
+app.js mein yeh likho 
+import '../styles/globals.css';
+import Head from 'next/head';
+import { ThemeProvider } from "@/components/ui/theme-provider"
+function MyApp({ Component, pageProps }) {
+ 
+  return (
+    <>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+        />
+      </Head>
+      <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <Component {...pageProps} />
+    </ThemeProvider>
+    </>
+  );
+}
+export default MyApp
+
+fir shadcn ki documentation padlo wha pe likha hai
+
+remember yeh bhi ek component hi hai jaise button hai . iska bhi ek button aata hai jise aap use kr skte aaram se apne navbar k andr . jb aap ise likhoge to aapka ek button aajayega jisko click krke aap aaram se light dark mode apply kr skte

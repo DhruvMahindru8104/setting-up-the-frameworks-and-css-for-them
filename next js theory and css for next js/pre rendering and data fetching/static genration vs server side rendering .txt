@@ -1,0 +1,18 @@
+### Static Generation
+
+- **Kaise Kaam Karta Hai:** Static Generation mein Next.js build time par aapke pages ka HTML generate karta hai. Ismein APIs se data bhi fetch karke HTML ke saath include kiya jata hai.
+- **User Experience:** Jab user ek page request karta hai, unhe pre-built HTML mil jata hai turant. Data already HTML mein included hota hai, isliye additional data load hone ka wait nahi hota.
+- **Use Case:** Ye un pages ke liye accha hai jahan content frequently change nahi hota, jaise blog posts ya static pages.
+
+### Server-side Rendering (SSR)
+
+- **Kaise Kaam Karta Hai:** Server-side Rendering mein HTML har user request pe generate hota hai. Matlab jab user ek page request karta hai, server latest data ko fetch karke real-time mein HTML create karta hai.
+- **User Experience:** Users ko HTML jaldi mil jata hai, lekin server har request pe data fetch karta hai. Ye useful hai un pages ke liye jahan content frequently update hota hai aur real-time mein dekhna zaroori hota hai.
+- **Use Case:** Ye dynamic pages ke liye best hai jahan content regularly update hota hai, jaise user dashboards ya live data feeds.
+
+### Summary
+
+- **Static Generation:** HTML aur data build time par ek sath tayaar ho jata hai. Users ko fast page milta hai with data  kyunki HTML pre-built hota hai, aur data load ka wait nhi krna padta.
+- **Server-side Rendering:** HTML har request pe fresh data ke sath server par generate hota hai. Users ko html page jaldi milta hai, lekin server data fetch karne mein thoda time lag sakta hai agar data frequently update hota hai.
+
+https://nextjs.org/learn-pages-router/basics/data-fetching/two-forms # ab dekho is url mein ek diagram hai jo btata kaise static generation sirf ek page build krta and then vo page quickly kisi bhi user ko show ho jayega . but in ssr html to quickly show hogi but data load hoga baar baar (api call hogi baar baar)

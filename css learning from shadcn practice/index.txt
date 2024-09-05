@@ -1,0 +1,14 @@
+1- remember every shadcn component is a div 
+2-how to know the box model of shadcn component 
+3- how to use unsplash images in next js 
+4- Image optimization using shadcn aspect ratio component
+my mistakes while making project 
+- mein component name ka folder bnaya jismein meine apne sare component rkhe but tailwind.config.js mein meine 
+  content: [
+    './pages/**/*.{js,jsx}',
+    './components/**/*.{js,jsx,ts,tsx}', # jbki yha component aana tha kyuki meine folder isi name ka bnaya tha 
+    './app/**/*.{js,jsx}',
+    './@/**/*.{js,jsx}',
+    './src/**/*.{js,jsx}',
+  ],
+iske karan mein tailwind ki sari classes use nhi kr paa rha tha jiske karan designing mein problem aayi aur mein soch rha tha shadcn mein problem hai .

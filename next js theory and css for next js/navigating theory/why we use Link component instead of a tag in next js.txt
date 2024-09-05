@@ -1,0 +1,3 @@
+The answer is ki jb bhi hum a tag ka use krte next js mein to navigating krte waqt hr baar page refresh hoga 
+Link component ka use krne se javascript navigate kregi pages mein jiske karan pages baar baar refresh nhi honge . 
+next js documentation mein example diya jismein inspect krke background color ko yellow krke dikhaya aur btaya gya hai ki page refresh nhi hota Link tag ka use krke, jbki agr hum a tag ka use krenge to page refresh hoga and background color default pe aa jayega (obvious si baat hai page refresh hoga to inspect k andr jo humne code likha vo bhi to hoga)

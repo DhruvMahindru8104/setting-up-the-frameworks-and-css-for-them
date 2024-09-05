@@ -1,0 +1,14 @@
+Dekho static files ko add krne k liye hum public directory mein add krenge
+
+/my-nextjs-app
+├── pages
+├── public
+│   ├── images
+│   │   └── logo.png
+│   ├── robots.txt
+│   └── google-site-verification.html
+└── ...
+aap dekh skte ho humne sari static files add ki public directory mein and agr hume koi image access krni to aayega 
+www.server.com/images/logo.png ya fir  www.server.com/audio/hello.mp3 ya fir koi video bhi   ( is trh aap static files ko access kr skte .)
+
+and robots.txt and google site verification . html aapko allow krti ki aapne konse pages index mein nhi rkhne google search mein .

@@ -1,0 +1,148 @@
+Dekho hmari ek api hai www.hello.com . Yeh koi request marega use 100 post dikhenge pr agr www.hello.com/5 marega to use 5th post milega . 
+Ab in getstatic path hum www.hello.com hi dalenge . Ab get static path is api k liye paths bnayega like www.hello.com/1,www.hello.com/2.....www.hello.com/100
+Ab yeh sare paths params mein aa jayenge . 
+Aab getstatic props mein hum params as argument dalenge . And www.hello.com/params.id . 
+Ab hum npm run build krenge to hr ek path k liye pre render html generate ho jayega with data of the path . Like www.hello.com/5 k liye alg html page and www.hello.com/100 k liye alg html page.
+As a result of it user jb request krega kisi bhi path ki to use quickly show hoga kyuki already html with any data from api is already built
+
+
+### Process Recap:
+
+1. **API Overview:**
+   - Aapki API `www.hello.com` pe 100 posts provide karti hai. Specific post ke liye, aap `www.hello.com/{id}` use karte ho, jahan `{id}` post ka number hai.
+
+2. **`getStaticPaths`:**
+   - Aap `getStaticPaths` me `www.hello.com` se data fetch karte ho, jisme 100 posts hain.
+   - `getStaticPaths` in sabhi posts ke IDs ke liye paths generate karta hai, jaise `www.hello.com/1`, `www.hello.com/2`, ..., `www.hello.com/100`.
+   - Har path ke liye ek `params` object create hota hai, jisme `id` hota hai. Yeh `params` object `getStaticProps` ko pass hota hai.
+
+3. **`getStaticProps`:**
+   - `getStaticProps` `params` object ko argument ke roop me leta hai.
+   - `params.id` ka use karke, aap specific post ke data ko API se fetch karte ho, jaise `www.hello.com/{params.id}`.
+   - Har post ke data ke liye ek unique HTML page pre-render hota hai.
+
+4. **Build Process:**
+   - Jab aap `npm run build` chalate ho, to Next.js har path ke liye ek pre-rendered HTML page generate karta hai.
+   - Example: `www.hello.com/5` ke liye ek specific HTML page generate hoga, jo 5th post ka data show karega.
+
+5. **User Request and Fast Response:**
+   - Jab user kisi bhi path (like `www.hello.com/5`) ki request karta hai, to server us path ke liye already pre-rendered HTML page directly serve kar deta hai.
+   - Kyunki HTML page pehle se bana hua hota hai, response instant hota hai, aur user ko page quickly show hota hai.
+
+### **Conclusion:**
+Aapne sahi tarike se samjha hai ki `getStaticPaths` aur `getStaticProps` kaise milkar har path ke liye pre-rendered HTML pages generate karte hain. Is approach ke saath, user ko fast aur optimized experience milta hai, kyunki HTML pages already build time par generate ho chuke hote hain.
+
+
+............................................
+code example
+
+
+### Step 1: To-Do Items (IDs) API Se Fetch Karna
+
+- API `https://jsonplaceholder.typicode.com/todos` ek list return karti hai jo to-do items ka data hota hai.
+- Hum is API ka use karke saare to-do items aur unke IDs ko fetch karenge.
+
+### Step 2: `getStaticPaths` – Paths Generate Karna
+
+- `getStaticPaths` function use karke hum har to-do item ke liye paths generate karenge, jo unki ID par based hoga.
+
+```javascript
+export async function getStaticPaths() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+  const todos = await res.json();
+
+  // Paths generate karenge, jaise: /todos/1, /todos/2, ...
+  const paths = todos.map((todo) => ({
+    params: { id: todo.id.toString() }, // ID ko string mein convert karenge . jo params hai vo sb post ki id ka array bna deta .like [1,2,3,4....100], and jo id hai params k andr key to vo hmesha vo hoga jo [].js mein likha hai like agr [list].js hai to params:{list:todo.id.toString()} hoga ok 
+  }));
+
+  return { paths, fallback: false }; # jo yeh paths hai vo next js k paas jayenge after running npm run build
+}
+```
+
+### Step 3: `getStaticProps` – Har Path Ke Liye Data Fetch Karna
+
+- `getStaticProps` function har specific to-do item ke liye data fetch karega jo path ki ID se related hoga.
+
+```javascript
+export async function getStaticProps({ params }) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${params.id}`); ab [id] k andr jo likhoge vo params.id k andr aa jayega
+  const todo = await res.json();
+
+  return { props: { todo } };
+}
+```
+
+### Step 4: Page Component Banana
+
+- Page component jo to-do item ke details display karega.
+
+```javascript
+const Todo = ({ todo }) => {
+  return (
+    <div>
+      <h1>To-Do Item {todo.id}</h1>
+      <h2>{todo.title}</h2>
+      <p>Completed: {todo.completed ? 'Yes' : 'No'}</p>
+    </div>
+  );
+};
+
+export default Todo;
+```
+
+### Step 5: Project Build Karna
+
+- `npm run build` command chalake hum har to-do item ke liye static HTML pages generate karenge (jaise `/todos/1`, `/todos/2`, ...).
+
+### Step 6: User Requests Aur Fast Response
+
+- Jab koi user specific to-do item page ko request karega (jaise `/todos/5`), to pre-rendered HTML page jaldi se serve ho jayega, jisme us to-do item ki details dikhai degi.
+
+### Final Code Structure
+
+#### `pages/todos/[id].js`
+
+```javascript
+import React from 'react';
+
+// Step 2: Generate paths for each to-do item
+export async function getStaticPaths() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+  const todos = await res.json();
+
+  const paths = todos.map((todo) => ({
+    params: { id: todo.id.toString() },
+  }));
+
+  return { paths, fallback: false };
+}
+
+// Step 3: Fetch data for each to-do item based on ID
+export async function getStaticProps({ params }) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${params.id}`);
+  const todo = await res.json();
+
+  return { props: { todo } };
+}
+
+// Step 4: Display the to-do item details
+const Todo = ({ todo }) => {
+  return (
+    <div>
+      <h1>To-Do Item {todo.id}</h1>
+      <h2>{todo.title}</h2>
+      <p>Completed: {todo.completed ? 'Yes' : 'No'}</p>
+    </div>
+  );
+};
+
+export default Todo;
+```
+
+### Summary:
+- **API**: `https://jsonplaceholder.typicode.com/todos`
+- **`getStaticPaths`**: Har to-do item ke liye paths generate karta hai (jaise `/todos/1`, `/todos/2`).
+- **`getStaticProps`**: Har to-do item ke liye data fetch karta hai, jo ID pe based hota hai.
+- **Page Component**: To-do item ka ID, title, aur completion status display karta hai.
+- **Result**: Har to-do item ke liye pre-rendered HTML pages generate hote hain, jo user ke visit karne par fast aur efficient loading ko ensure karte hain.

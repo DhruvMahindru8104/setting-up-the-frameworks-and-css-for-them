@@ -1,0 +1,138 @@
+
+
+### **Server-side Rendering (SSR) with `getServerSideProps`**
+definition- server side rendering getServerSideProps function ki madad se hota hai . ismein html and api data jo frequently change hota ha  ek sath show hota hai . as a result of it pura page show hone mein thoda time lgta hai
+
+1. **Data Fetching**:
+   - Server pehle `getServerSideProps` ke zariye data fetch karta hai.
+   - Server ye data use karke poora HTML page generate karta hai.
+
+2. **Page Load**:
+   - User ko ek fully-rendered HTML page milta hai, jismein data already included hota hai.
+   - Initial load thoda slow ho sakta hai kyunki server ko data fetch karna padta hai aur page render karna padta hai.
+
+3. **SEO aur User Experience**:
+   - HTML page fully-rendered aur data ke saath browser ko bheja jata hai, jo SEO ke liye accha hai.
+   - Users ko page load hone par poora content milta hai, lekin data fetching ki wajah se thoda delay ho sakta hai.
+// pages/post/[id].js
+
+import React from 'react';
+
+export async function getServerSideProps(context) { # context args hote getServerSideProps ke
+  // API se blog post data fetch karo
+  const res = await fetch(`https://api.example.com/posts/${context.params.id}`);
+  const post = await res.json();
+
+  // Data ko page props ke roop mein return karo
+  return {
+    props: {
+      post,
+    },
+  };
+}
+
+const Post = ({ post }) => {
+  return (
+    <div>
+      <h1>{post.title}</h1>
+      <p>{post.content}</p>
+      <footer>{post.author}</footer>
+    </div>
+  );
+};
+
+export default Post;
+getServerSideProps function har request par server pe run hota hai aur data fetch karta hai.
+Server fully-rendered HTML page ko client ko bhejta hai, jismein data already included hota hai. means html and data ek sath show hoga pr display krne mein thoda delay ho skta
+
+
+
+
+### **Client-side Rendering (CSR)**
+definition- client side rendering useEffect function ki madad se hota hai . ismein html quickly show hojata hai pr data fetch krne mein thoda time lgta kyuki data frequent change ho rha hai 
+
+1. **Initial HTML Load**:
+   - Server ek basic HTML shell aur JavaScript files client ko bhejta hai.
+   - Ye usually faster hota hai kyunki server ko data fetch karna nahi padta hai.
+
+2. **Data Fetching**:
+   - Jab page browser mein load hota hai, JavaScript run hoti hai aur data fetch kiya jata hai (jaise `useEffect` ke through).
+   - Data fetch hone ke baad, content dynamically page mein insert hota hai.
+
+3. **SEO aur User Experience**:
+   - Initial HTML thoda basic ho sakta hai ya loading indicators ke saath dikhai de sakta hai jab tak data fetch nahi hota.
+   - Ye approach initial load ko faster bana sakti hai, lekin users ko loading states dekhne ko mil sakte hain.
+
+
+// pages/post/[id].js
+
+import React, { useEffect, useState } from 'react';
+
+const Post = () => {
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Get the post ID from the URL (assuming it's in the format /post/[id])
+  const postId = window.location.pathname.split('/')[2];
+
+  useEffect(() => {
+    async function fetchPost() {
+      try {
+        const res = await fetch(`https://api.example.com/posts/${postId}`);
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await res.json();
+        setPost(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPost();
+  }, [postId]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  return (
+    <div>
+      <h1>{post.title}</h1>
+      <p>{post.content}</p>
+      <footer>{post.author}</footer>
+    </div>
+  );
+};
+
+export default Post;
+ab yha pe html pehle show ho jayega and html show hone k baad data fetch hoga using useEffect 
+
+### Frequently Changing Data Handling
+
+- **SSR**: Har request pe fresh data fetch hota hai, isliye users ko updated information milti hai. Lekin har request me thoda delay ho sakta hai data fetching ke wajah se.
+
+- **CSR**: Initial load faster hota hai, aur data dynamically update hota hai. Aap polling ya WebSockets use kar sakte hain taaki data updated rahe. Lekin users ko pehle loading states ya incomplete content dekhne ko mil sakta hai.
+
+### Kab Use Karein
+
+- **SSR Use Karein** jab:
+  - SEO zaroori ho aur aap chahte hain ki users ko page load hone par poora content mile.
+  - Aapko ensure karna hai ki users ko hamesha updated data mile har page load pe.
+  - Data ko client pe expose karna secure nahi lagta.
+
+- **CSR Use Karein** jab:
+  - Aapko fast initial page load chahiye aur client-side pe data fetching handle karna hai.
+  - SEO utna important nahi hai ya aap other SEO techniques use kar rahe hain.
+  - Application ko frequent interactions aur updates chahiye jo client-side dynamic content se better handle ho.
+
+### Summary
+
+- **SSR**: Server data fetch karta hai aur complete HTML page generate karta hai, jo thoda slow ho sakta hai initially lekin poora content ke saath hota hai.
+- **CSR**: Server basic HTML bhejta hai, aur JavaScript browser mein data fetch karti hai, jo initial load ko faster bana sakta hai lekin content loading states ke saath dikhai de sakta hai. means html quickly show ho jayegi but data baad mein show hoga loading k sath 
+
+Dono approaches ka apna fayda hai aur aapki specific needs ke hisaab se choose karna chahiye.
+
+https://nextjs.org/learn-pages-router/basics/data-fetching/request-time is page mein diagram hai jo aapko btayega client side rendering kaise kaam krti and ssr kaise

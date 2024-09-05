@@ -1,0 +1,4 @@
+- what is paths 
+- getStaticPaths
+- fallback in getStaticPaths
+- custom 404 page in next js 

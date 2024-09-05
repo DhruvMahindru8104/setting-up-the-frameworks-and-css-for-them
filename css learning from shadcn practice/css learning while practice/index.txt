@@ -1,0 +1,4 @@
+1-how to adjust parent height and width according to its child height and width(this will be done through h-auto and w-auto)
+2- how to adjust child height and width according to its parent height and width (this will be done though h-full or w-full)
+3- responsive designing in tailwind css(using mobile first approach)
+4-viewport unit in css (vh or vw) in tailwind the class name is screen

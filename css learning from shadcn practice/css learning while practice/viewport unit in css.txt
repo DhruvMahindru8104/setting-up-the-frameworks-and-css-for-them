@@ -1,0 +1,28 @@
+-for height we will use vh unit
+-for width we will use vw unit 
+
+vh mtlb viewport height - it means agr aapki mobile ki screen height 600 px to 1 vh 6 px hoga mtlb div 6 px ki height pe set ho jayega . same agr 1000px ki screen k liye 1 vh -10 px hoga 
+- same with width 
+https://tailwindcss.com/docs/height is link pe sari details hai 
+
+in tailwind agr aap height and width ka 100 percent viewport chahte ho to aata hai w-screen and h-screen 
+
+-best practice hai jonse elements(div ,image etc) ka parent body hai unpr aap w-full ki jgh w-screen ka use kr skte ho and h-screen ka use kr skte ho 
+
+example 
+<>
+    <div className=' bg-red-700 p-4 h-1/2'> // ab yeh element ka parent kuch bhi nhi means ki iska parent body hai to yeh 1/2 ki height achieve nhi kr payega isliye yha pe h-screen ya h-[100vh or any value] likho 
+    <div className='bg-green-800 text-blue-800 text-2xl w-1/4 '> ab yeh apne parent div k hisab se height le lega 
+        h
+    </div>
+    </div>
+    </>
+
+    right approach
+
+      <div className=' bg-red-700 p-4 h-[50vh] or h-screen(means h-[100vh])'> // ab yeh element ka parent kuch bhi nhi means ki iska parent body hai to yeh 1/2 ki height achieve nhi kr payega isliye yha pe h-screen ya h-[100vh or any value] likho 
+    <div className='bg-green-800 text-blue-800 text-2xl w-1/4 '> ab yeh apne parent div k hisab se height le lega 
+        h
+    </div>
+    </div>
+    </>

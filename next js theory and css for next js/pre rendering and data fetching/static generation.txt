@@ -1,0 +1,59 @@
+Static site generation two types ki hoti 
+
+Pehla Type: Bina Data ke
+Is type mein aap simple ek page banate ho, jismein aap audio, video, images, etc. include karte ho. Jab aap npm run build karte ho, to ek pre-rendered HTML file generate hoti hai jismein ye sab content pehle se hi hota hai. Jab koi user is page ko request karta hai, to ye page bina kisi delay ke, turant dikhaya jata hai.
+function About() {
+  return (
+    <div>
+      <h1>About Us</h1>
+      <p>We are a company that values innovation and quality.</p>
+      <img src="/static/image.jpg" alt="Our Company" />
+      <audio controls>
+        <source src="/static/audio.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <video width="320" height="240" controls>
+        <source src="/static/video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  );
+}
+
+export default About;
+# bina api data k 
+
+
+
+Dusra Type: Data ke Saath
+Ab maan lo aapko API se data fetch karna hai, lekin aap nahi chahte ki har user request par API baar-baar hit ho. Isliye aap getStaticProps ka use karte ho. getStaticProps build process ke dauran API se data fetch karta hai, aur ye data pre-rendered HTML file mein add ho jata hai. Jab aap npm run build karte ho, to data bhi us HTML mein pehle se hi shamil hota hai. Iska fayda ye hota hai ki user ko data ke saath page bahut jaldi aur efficiently dikhai deta hai, bina API ko baar-baar hit kiye.
+
+export async function getStaticProps() {
+  // API se data fetch karte hain
+  const res = await fetch('https://api.example.com/posts');
+  const posts = await res.json(); # yeh api bs ek baar fetch hogi npm run build k time fir yeh data html mein include ho jayega and user data ko quickly dekh payega because now data is part of html jiske karan user ko baar baar api request nhi marni padegi
+
+  return {
+    props: {
+      posts, # jo props yha pe send kroge vo npm run buid k time pe html mein add ho jayenge jiske karan data and html dono turant quickly user ko show ho jayenge. and data ko fetch krne k liye bilkul bhi user ko api baar baar fetch nhi krna padega
+    },
+  };
+}
+
+function Blog({ posts }) { # post props get static props function se aaya hai ab npm run build k time mein html mein include ho jayega
+  return (
+    <div>
+      <h1>Blog</h1>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default Blog;
+Is code mein, getStaticProps function build time par API se data fetch karta hai. Jab aap npm run build karte hain, to ye data pre-rendered HTML mein include ho jata hai. Jab user is page ko request karta hai, to page ke saath API se fetched data bhi turant dikhai deta hai, bina API ko baar-baar hit kiye.
+jo aap props mein bhejoge get static props se vo props html mein npm run  build k time mein add ho jayega jiske karan user ko data k liye fetch nhi krna padega data ko baar baar
+

@@ -1,0 +1,37 @@
+Yeh options kaise select karna hai, woh tumhari website ki zarurat par depend karta hai. Main isko ek example ke saath hinglish mein explain karta hoon:
+
+### **1. Choose `fallback: false`:**
+
+- **Kab Use Karna Chahiye:**
+  - Agar tumhare paas ek well-defined set of pages hai, matlab tumhe pata hai kaunse pages pehle se hi generate karne hain.
+  - Example: Socho tumhare paas ek blog hai jismein sirf kuch fixed posts hain, aur tumhe pata hai ki aur koi nayi post nahi aane wali. Tum build time pe saare pages pre-generate kar sakte ho.
+
+- **Behavior:**
+  - Agar koi user ek aisa page visit karega jo build time pe generate nahi hua, to usko 404 error milega.
+  - Example: Agar `getStaticPaths` ne sirf 5 blog posts ke liye pages banaye hain, aur koi user 6th post ka page visit karne ki koshish karta hai, to usko 404 page dikhega.
+
+### **2. Choose `fallback: true`:**
+
+- **Kab Use Karna Chahiye:**
+  - Agar tumhare content mein frequently updates hote hain, ya naye pages add hote hain, aur tum nahi chahte ki users ko 404 error dikhe, toh yeh option best hai.
+  - Example: Socho tumhare blog pe users nayi posts dalte rehte hain. Tum nahi chahte ki naye post ka page visit karne par user ko 404 mile. Is case mein, tum `fallback: true` use kar sakte ho.
+
+- **Behavior:**
+  - Jab koi naya page visit hota hai jo pre-generated nahi tha, toh pehle ek fallback page dikhta hai (jaise ek loading spinner). Uske baad, Next.js background mein page generate karta hai aur users ko serve karta hai.
+  - Example: Agar user 6th post visit karta hai jo pehle generate nahi hui thi, toh usko pehle ek loading screen dikhegi, aur fir page generate hoke dikhega. Agli baar se woh page static tarah serve hoga.(means ki jaise getstaticprops mein data quickly html k sath show ho jata vaise )
+
+### **3. Choose `fallback: 'blocking'`:**
+
+- **Kab Use Karna Chahiye:**
+  - Agar tum chahte ho ki users ko hamesha ek fully-rendered page mile, bina koi loading state dekhe, toh yeh option choose karo.
+  - Example: Socho tumhare blog mein quality aur user experience important hai, aur tum nahi chahte ki users ko kabhi bhi loading screen dikhe.
+
+- **Behavior:**
+  - Jab ek naya page visit hota hai jo pre-generated nahi tha, toh Next.js page generate hone tak request ko block kar deta hai. Matlab, user ko loading state nahi dikhegi, lekin usko thoda wait karna padega jab tak page generate hota hai.
+  - Example: Agar user 6th post visit karta hai jo pre-generated nahi thi, toh usko directly fully rendered page dikhega, lekin usko thoda wait karna pad sakta hai jab tak page generate ho raha hai.
+
+In short:
+
+- **`fallback: false`** tab use karo jab tumhare paas fixed aur predefined content ho.
+- **`fallback: true`** tab use karo jab content frequently change hota ho aur tum users ko 404 se bachana chahte ho, even if it means showing a loading state.
+- **`fallback: 'blocking'`** tab use karo jab tum chahte ho ki user ko hamesha ek complete page mile, even if they have to wait for it to be generated.

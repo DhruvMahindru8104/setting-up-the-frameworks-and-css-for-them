@@ -1,0 +1,7 @@
+- where to put static files like images , audios, videos , pdf etc in next js 
+- robots.txt and google verifification files .html kya hai 
+- why to use next js Image component instead of html <img> tag
+- Head tag
+- third party javascript
+- how to add css in next js (inline and external and tailwind)
+

@@ -1,0 +1,18 @@
+### Traditional Websites:
+- **Kaise Kaam Karta Hai:** Traditional websites mein, pehle browser JavaScript files ko download karta hai.
+- **Page Display:** JavaScript ke complete hone ke baad, woh HTML generate karta hai aur tab page ko display karta hai.
+
+### Next.js:
+- **Kaise Kaam Karta Hai:**
+  1. **Pre-rendering:** Next.js server pe page ke liye HTML pehle se tayaar karta hai.
+  2. **Instant Display:** Jab aap page visit karte hain, browser turant pre-made HTML ko receive karta hai aur content jaldi dikhai deta hai.
+  3. **JavaScript Loading:** HTML ke dikhne ke baad, browser JavaScript download karta hai.
+  4. **Hydration:** JavaScript page ko interactive banata hai (jaise buttons, links, aur forms ko functional banana).
+
+### Summary:
+- **Traditional Websites:** Pehle JavaScript load hota hai, HTML generate hota hai, aur phir page display hota hai.
+- **Next.js:** Pehle HTML display hota hai (jo server ne pre-render kiya hota hai), aur phir JavaScript load hota hai aur page ko interactive banata hai (hydration).
+
+Isse Next.js mein content jaldi dikhai deta hai aur phir page fully interactive ho jata hai jab JavaScript load hota hai.
+
+https://nextjs.org/learn-pages-router/basics/data-fetching/pre-rendering # ab is url mein ek diagram hai jo btata hai ki load hote hi hume html dikhti hai and then js download hoti jise website interaction bnti . jbki traditional website mein sb kuch pehle download hota and then fir display krta . 

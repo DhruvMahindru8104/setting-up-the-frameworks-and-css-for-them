@@ -1,0 +1,31 @@
+  <div className=' bg-blue-600 p-2 flex flex-col w-1/2 md:w-1/4 '> {/* remember images ka sath kaam krte wakt sirf width hi dena hai , height dene ki jrurat nhi( height aspect ratio apne aap adjust kr lega ) and remember width and height hogi vo aspect ratio k parent div mein deni hai */}
+  <AspectRatio ratio={16 / 9} > {/* aspect ratio component kisi na kisi parent k andr hoga chahe vo div ho card ho ya kuch bhi  */}
+  <Image // image component bhi hmesha aspect ratio k andr rhega 
+    src='/k.jpg'
+    alt="Photo by Drew Beamer"
+    fill // ise hmesha fill rkho kyuki apect ratio k hisab se image apne aap ko fill rkhegi 
+    className="h-full w-full rounded-md object-cover"
+  />
+</AspectRatio>
+</div>
+
+# in simple koi bhi image ko responsive bnana hai . Bs yhi code likh do
+
+in simple Image ko aise mt lgao 
+<Image 
+src='/path to image'
+width ={}
+height={}
+/>
+
+instead aise likho 
+  <div className=' bg-blue-600 p-2 flex flex-col w-1/2 md:w-1/4 '> {/* remember images ka sath kaam krte wakt sirf width hi dena hai , height dene ki jrurat nhi( height aspect ratio apne aap adjust kr lega ) and remember width and height hogi vo aspect ratio k parent div mein deni hai*/}
+  <AspectRatio ratio={16 / 9} > {/* aspect ratio ka ek parent hmesha hoga . and hmesha isi aspect mein rhegi image mtlb width 16 hogi and height 9 hogi chahe width jo mrzi hi kyu na ho  */}
+  <Image // image component bhi hmesha aspect ratio k andr rhega 
+    src='/k.jpg'
+    alt="Photo by Drew Beamer"
+    fill // ise hmesha fill rkho kyuki apect ratio k hisab se image apne aap ko fill rkhegi 
+    className="h-full w-full rounded-md object-cover"
+  />
+</AspectRatio>
+</div>

@@ -1,0 +1,35 @@
+1- dekho remember shadcn ka koi bhi component ho vo ek div hai . 
+<Accordion type="single" collapsible> # this is a div
+  <AccordionItem value="item-1"> # this is a div 
+    <AccordionTrigger>Is it accessible?</AccordionTrigger> # this is a div 
+    <AccordionContent> # this is a div 
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </AccordionContent> # this is a div 
+  </AccordionItem> # this is a div 
+</Accordion> # this is a div 
+
+# jaise hum hr ek div mein styling kr skte similarly hum inmein bhi styling kr skte aaram se 
+<Accordion type="single" classname='tailwind class' style={{inner css}} collapsible> # this is a div
+  <AccordionItem value="item-1" classname='tailwind class' style={{inner css}}> # this is a div 
+    <AccordionTrigger classname='tailwind class' style={{inner css}}>Is it accessible?</AccordionTrigger> # this is a div 
+    <AccordionContent classname='tailwind class' style={{inner css}}> # this is a div 
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </AccordionContent classname='tailwind class' style={{inner css}}> # this is a div 
+  </AccordionItem classname='tailwind class' style={{inner css}}> # this is a div 
+</Accordion classname='tailwind class' style={{inner css}}> # this is a div 
+
+- here you can see ki hum kaise in components k andr tailwind css ki classes and inline style ka aaram se use kr pa rhe hai 
+
+
+
+# what dont need to do 
+<div>
+<Accordion type="single" collapsible> # aapko isko div mein pack krne ki jrurat nhi 
+</div>
+  <AccordionItem value="item-1"> # this is a div 
+    <AccordionTrigger>Is it accessible?</AccordionTrigger> 
+    <AccordionContent> 
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </AccordionContent> 
+  </AccordionItem> 
+</Accordion> 

@@ -1,0 +1,8 @@
+component folder mein -
+function Button({ label, onClick }) {  # jo page se component pass kiye vo yha pr aa jayenge 
+  return <button onClick={onClick}>{label}</button>;
+}
+
+page folder mein 
+import Button
+<Button label='good',onClick='helo'/> # ab aap props pass kroge page se 

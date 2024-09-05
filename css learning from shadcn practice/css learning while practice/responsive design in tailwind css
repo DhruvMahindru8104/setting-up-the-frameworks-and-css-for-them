@@ -1,0 +1,37 @@
+``` dekho tailwind css mein agr hume responsive design krna hai to hume mobile first approach apnani padni (it means ki by default jo classes hoyengi vo mobile k liye hoyengi and then agr big screens k liye alg classes lgani hai to hum use krenge sm:,md:,lg:,xl:,2xl:)```
+
+Chaliye, ek simple example dekhte hain jisme ek div ke andar text hai, aur screen size ke hisaab se uska background color change hota hai.
+
+### Example:
+
+```html
+<div class="bg-blue-500 p-4 sm:bg-green-500 md:bg-yellow-500 lg:bg-red-500 xl:bg-purple-500 2xl:bg-pink-500">
+  <p class="text-white text-center">Responsive Background Color</p>
+</div>
+```
+
+### Breakdown:
+- **Mobile (`<640px`):** 
+  - Background color `bg-blue-500` (blue) hota hai.
+  - Padding `p-4` hai aur text center aligned (`text-center`).
+  
+- **Small screens (`sm:`) - `≥640px`:**
+  - Background color `bg-green-500` (green) ho jaata hai.
+
+- **Medium screens (`md:`) - `≥768px`:**
+  - Background color `bg-yellow-500` (yellow) ho jaata hai.
+
+- **Large screens (`lg:`) - `≥1024px`:**
+  - Background color `bg-red-500` (red) ho jaata hai.
+
+- **Extra Large screens (`xl:`) - `≥1280px`:**
+  - Background color `bg-purple-500` (purple) ho jaata hai.
+
+- **2XL screens (`2xl:`) - `≥1536px`:**
+  - Background color `bg-pink-500` (pink) ho jaata hai.
+
+### Result:
+- Mobile devices par, background color blue hoga.
+- Jaise jaise screen size badhega (`sm:`, `md:`, `lg:`, `xl:`, `2xl:`), background color green, yellow, red, purple, aur pink hota jaayega.
+
+Ye example dikhata hai kaise Tailwind CSS mein mobile-first approach use karke ek simple div ke background color ko different screen sizes par change kiya jaa sakta hai.

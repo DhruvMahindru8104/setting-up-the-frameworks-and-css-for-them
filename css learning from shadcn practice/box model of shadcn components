@@ -1,0 +1,18 @@
+dekho agr aapko shadcn mein customization krni to hr component,box,div ko ek bg color dedo iska use krke aap aaram se customization kr skte
+
+<div className='flex justify-center bg-blue-800 py-10'>
+<Carousel className='border w-1/2 bg-cyan-500' >
+<CarouselContent style={{padding:'15px'}}>
+<CarouselItem className='bg-red-800 text-center' >my item 1</CarouselItem>
+<CarouselItem className='bg-red-200 text-center' >my item 2</CarouselItem>
+<CarouselItem className='bg-red-500 text-center'  >my item 3</CarouselItem>
+</CarouselContent>
+<CarouselNext/>
+<CarouselPrevious/>
+
+  </Carousel>
+</div>
+is trh krke aap aaram se customization kr skte and aap hr ek component ko bhut achi trh bna skte 
+
+
+and aapko hr ek component ko background color deke yeh bhi pta lg jayega ki vo component ka box kha tk hai like agr aapko pta lgana <CarouselContent> ka box kha hai to isko background color deke aapko aaram se pta lg jayega and fir aap ismein customization kr k aaram se aur acha design bna skte 

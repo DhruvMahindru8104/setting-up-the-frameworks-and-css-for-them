@@ -1,0 +1,4 @@
+- push your code to github
+- where to open git bash
+- how to clean your git from your project . means apne folder mein se git ko kaise remove kre
+- how to update your git repository and commands to add , delete and update the files
