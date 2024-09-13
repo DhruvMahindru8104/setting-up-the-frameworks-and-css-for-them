@@ -18,4 +18,21 @@ optimize ka meaning hota hai image ko compress krna it means bdi size ki photo k
 - **Kya Hai:** Images aise render hoti hain jo page ke layout ko stable rakhti hain jab images load hoti hain.
 - **Example:** Jab page load ho raha hota hai aur images load ho rahi hoti hain, to page ka layout change nahi hota. Isse user experience smooth rehta hai aur page ka design stable rehta hai.
 
-Is tarah se, Next.js images ko handle karne ke liye kaafi smart features provide karta hai jo aapki website ko fast aur efficient banate hain.
+Is tarah se, Next.js images ko handle karne ke liye kaafi smart features provide karta hai jo aapki website ko fast aur efficient banate 
+hain.
+
+
+
+Yes, even though your page is statically rendered and the initial HTML is served quickly, images can still take some time to load due to factors like:
+
+Image Size and Format: Large images or unoptimized formats will take longer to download.
+Network Speed: On slower networks (like 2G or 3G), even optimized images may load more slowly.
+Lazy Loading: If you're using lazy loading, the images won't load until they come into the viewport.
+Static pages only guarantee that the HTML is pre-built and served instantly, but images (or any other external assets) still depend on network conditions and optimizations.
+
+To reduce the load time for images, you can:
+
+Optimize image sizes and formats.
+Use the Next.js Image component to automatically serve the best size and format.
+Use CDNs to speed up image delivery.
+These techniques will help reduce the loading time of your images even on slower networks.
